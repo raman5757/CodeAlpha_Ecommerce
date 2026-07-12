@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between mb-4">
+
+<h2>Admin Dashboard</h2>
+
+<a href="/add-product" class="btn btn-success">
+Add Product
+</a>
+
+</div>
+
+<table class="table table-bordered table-hover">
+
+<tr>
+
+<th>Image</th>
+<th>Name</th>
+<th>Category</th>
+<th>Price</th>
+<th>Actions</th>
+
+</tr>
+
+{% for product in products %}
+
+<tr>
+
+<td>
+<img src="{{product.image}}" width="80">
+</td>
+
+<td>{{product.name}}</td>
+
+<td>{{product.category}}</td>
+
+<td>₹ {{product.price}}</td>
+
+<td>
+
+<a href="/update-product/{{product._id}}" class="btn btn-warning btn-sm">
+Edit
+</a>
+
+<a href="/delete-product/{{product._id}}" class="btn btn-danger btn-sm">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

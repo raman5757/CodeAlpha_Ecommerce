@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="text-center">
+
+<h1 class="mt-5">Welcome to CodeAlpha E-Commerce</h1>
+
+<p class="lead">
+Shop Electronics, Fashion, Watches, Shoes and much more.
+</p>
+
+<a href="/products" class="btn btn-primary btn-lg mt-3">
+Shop Now
+</a>
+
+</div>
+
+<hr class="my-5">
+
+<div class="row">
+
+{% for product in products %}
+
+<div class="col-md-3 mb-4">
+
+<div class="card h-100">
+
+<img src="{{product.image}}" height="220">
+
+<div class="card-body">
+
+<h5>{{product.name}}</h5>
+
+<h4>₹ {{product.price}}</h4>
+
+<a href="/product/{{product._id}}" class="btn btn-dark w-100">
+
+View Product
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

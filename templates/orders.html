@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2>My Orders</h2>
+    <hr>
+
+    {% if orders %}
+
+        {% for order in orders %}
+
+        <div class="card mb-4">
+
+            <div class="card-header">
+
+                <strong>Status:</strong>
+                {{ order.status }}
+
+            </div>
+
+            <div class="card-body">
+
+                <p>
+                    <strong>Total :</strong>
+                    ₹ {{ order.total }}
+                </p>
+
+                <h5>Products</h5>
+
+                <table class="table table-bordered">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for product in order.products %}
+
+                        <tr>
+
+                            <td>
+                                <img src="{{ product.image }}" width="70">
+                            </td>
+
+                            <td>{{ product.name }}</td>
+
+                            <td>₹ {{ product.price }}</td>
+
+                            <td>{{ product.quantity }}</td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <h4>No Orders Yet</h4>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add Product</h2>
+
+<form method="POST">
+
+<input
+class="form-control mb-3"
+name="name"
+placeholder="Product Name"
+required>
+
+<input
+class="form-control mb-3"
+name="category"
+placeholder="Category"
+required>
+
+<input
+type="number"
+class="form-control mb-3"
+name="price"
+placeholder="Price"
+required>
+
+<input
+class="form-control mb-3"
+name="image"
+placeholder="Image URL"
+required>
+
+<textarea
+class="form-control mb-3"
+name="description"
+placeholder="Description">
+</textarea>
+
+<button class="btn btn-success">
+Add Product
+</button>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <!-- Profile Card -->
+        <div class="col-md-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                         width="120"
+                         class="mb-3">
+
+                    <h3>{{ user.name }}</h3>
+
+                    <p class="text-muted">
+                        {{ user.email }}
+                    </p>
+
+                    <hr>
+
+                    <p>
+                        <strong>Phone :</strong><br>
+                        {{ user.phone if user.phone else "Not Added" }}
+                    </p>
+
+                    <p>
+                        <strong>Address :</strong><br>
+                        {{ user.address if user.address else "Not Added" }}
+                    </p>
+
+                    <a href="/orders" class="btn btn-primary w-100 mb-2">
+                        📦 My Orders
+                    </a>
+
+                    <a href="/logout" class="btn btn-danger w-100">
+                        🚪 Logout
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Edit Profile -->
+        <div class="col-md-8">
+
+            <div class="card shadow mb-4">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h4>Edit Profile</h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form action="/update-profile" method="POST">
+
+                        <div class="mb-3">
+
+                            <label>Name</label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="name"
+                                value="{{ user.name }}"
+                                required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>Email</label>
+
+                            <input
+                                type="email"
+                                class="form-control"
+                                value="{{ user.email }}"
+                                readonly>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>Phone</label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="phone"
+                                value="{{ user.phone if user.phone else '' }}">
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>Address</label>
+
+                            <textarea
+                                class="form-control"
+                                rows="4"
+                                name="address">{{ user.address if user.address else '' }}</textarea>
+
+                        </div>
+
+                        <button class="btn btn-success">
+                            Update Profile
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!-- Change Password -->
+
+            <div class="card shadow">
+
+                <div class="card-header bg-warning">
+
+                    <h4>Change Password</h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form action="/change-password" method="POST">
+
+                        <div class="mb-3">
+
+                            <label>Old Password</label>
+
+                            <input
+                                type="password"
+                                class="form-control"
+                                name="old_password"
+                                required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>New Password</label>
+
+                            <input
+                                type="password"
+                                class="form-control"
+                                name="new_password"
+                                required>
+
+                        </div>
+
+                        <button class="btn btn-warning">
+                            Change Password
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
